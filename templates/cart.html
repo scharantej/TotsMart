@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Shopping Cart</title>
+</head>
+<body>
+<h1>Shopping Cart</h1>
+<ul>
+{% for product in cart.items %}
+<li>{{ product.name }} x {{ product.quantity }}</li>
+{% endfor %}
+</ul>
+<p>Total: {{ cart.total }}</p>
+<form action="{{ url_for('remove_from_cart') }}" method="post">
+<input type="hidden" name="product_id" value="{{ product.id }}">
+<button type="submit">Remove from Cart</button>
+</form>
+<a href="{{ url_for('checkout') }}">Checkout</a>
+</body>
+</html>
+
+
